@@ -1,12 +1,10 @@
 configuration: Release
-services:
-  - mssql2012sp1
   
 before_build:
   - nuget restore
   
 build:
-  project: MySiteMVC4.sln
+  project: Patents.sln
   verbosity: minimal
   publish_wap: true
 
@@ -15,5 +13,5 @@ test:
     Tests.dll
 
 test_script:
- - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Tests\bin\Release\Tests.dll -noshadow" -filter:"+[MySiteMVC4*]* -[Tests*]*" -output:".\coverage.xml"
+ - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\Tests\bin\Release\Tests.dll -noshadow" -filter:"+[Patents*]* -[Tests*]*" -output:".\coverage.xml"
  - .\packages\Codecov.1.0.3\tools\codecov.exe -f "coverage.xml"

@@ -8,5 +8,5 @@ coverage:
   range: "50...100"
 
 ignore:
-  - MySiteMVC4/App_Start/.*
-  - MySiteMVC4/Global.asax.cs
+  - Patents/App_Start/.*
+  - Patents/Global.asax.cs
