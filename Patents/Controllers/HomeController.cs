@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patents.Models.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace Patents.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            var roles = new RolesRepository().Roles;
+            var states = new StateRepository().States;
+            return View(states.Select(x => (x.StateId.ToString() + ". " + x.Info)));
         }
     }
 }
