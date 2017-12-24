@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Patents.Models.Entities;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Patents.Models
@@ -16,6 +17,6 @@ namespace Patents.Models
         public Register Register { get; set; }
         [Required]
         public int StateId { get; set; }
-        public Statement State { get; set; }
+        public State State { get; set; }
     }
 }
