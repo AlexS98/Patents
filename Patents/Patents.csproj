@@ -118,6 +118,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -143,6 +144,7 @@
     <Compile Include="Models\Repositories\StatementsRepository.cs" />
     <Compile Include="Models\Repositories\StatesRepository.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
+    <Compile Include="Models\ViewModels\MeetingsView.cs" />
     <Compile Include="Models\ViewModels\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -155,6 +157,8 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Meetings\ShowAll.cshtml" />
+    <Content Include="Views\Meetings\MeetingsTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

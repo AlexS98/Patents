@@ -10,7 +10,7 @@ namespace Tests
         public void IndexTest()
         {
             HomeController controller = new HomeController();
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Test() as ViewResult;
             Assert.NotNull(result);
         }
     }

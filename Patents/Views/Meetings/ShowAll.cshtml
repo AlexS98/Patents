@@ -1,0 +1,24 @@
+﻿@model Patents.Models.ViewModels.MeetingsView
+
+@using (Html.BeginForm("FindByParams", "Meetings", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.State)
+        @Html.EditorFor(x => x.State)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.InventorName)
+        @Html.EditorFor(x => x.InventorName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RegisterName)
+        @Html.EditorFor(x => x.RegisterName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Date)
+        @Html.EditorFor(x => x.Date)
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary login-button">Find by params</button>
+    </div>
+}

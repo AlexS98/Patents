@@ -90,13 +90,13 @@ namespace Patents.Controllers
         {
             InventorsRepository inventors = new InventorsRepository();
             inventors.AddInventor(registerModel.ToInventor());
-            /*LoginModel model = new LoginModel
-            {
-                Manager = false,
-                Name = registerModel.FullName,
-                Password = registerModel.Password
-            };
-            await Login(model);//redirect to login(post)*/
+            //LoginModel model = new LoginModel
+            //{
+            //    Manager = false,
+            //    Name = registerModel.FullName,
+            //    Password = registerModel.Password
+            //};
+            //await Login(model);//redirect to login(post)
             return RedirectToAction("Login", "Account");
         }
     } 

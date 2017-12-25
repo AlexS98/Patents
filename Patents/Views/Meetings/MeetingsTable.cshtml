@@ -1,0 +1,44 @@
+﻿@using Patents.Models
+@model IEnumerable<Meeting>
+@{
+    ViewBag.Title = "Meetings";
+}
+<h2>ShowAll</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Inventor</th>
+            <th>Register</th>
+            <th>State</th>
+            <th>Additions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.Date</td>
+                    <td>@i.Inventor.Name</td>
+                    <td>@i.Register.Name</td>
+                    <td>@i.State.Info</td>
+                    <td>@i.Additions</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td>No data!</td>
+                <td>No data!</td>
+                <td>No data!</td>
+                <td>No data!</td>
+                <td>No data!</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.Action("ShowAll", "Meetings")
