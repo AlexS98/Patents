@@ -1,0 +1,43 @@
+﻿@model Patents.Models.ViewModels.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register inventor</h2>
+<hr />
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div>
+    @Html.ValidationSummary(true)
+
+    <div>
+        @Html.LabelFor(model => model.FullName)
+        @Html.EditorFor(x => x.FullName)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Email)
+        @Html.EditorFor(x => x.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Address)
+        @Html.EditorFor(x => x.Address)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.Password)
+        @Html.EditorFor(x => x.Password)
+    </div>
+
+    <div>
+        @Html.LabelFor(model => model.PasswordConfirm)
+        @Html.EditorFor(x => x.PasswordConfirm)
+    </div>
+    <input type="submit" value="Register" />
+
+</div>
+}

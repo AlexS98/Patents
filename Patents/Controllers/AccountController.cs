@@ -1,6 +1,7 @@
 ﻿using Microsoft.Owin.Security;
 using Patents.Models;
 using Patents.Models.Entities;
+using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -21,6 +22,7 @@ namespace Patents.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -76,5 +78,26 @@ namespace Patents.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterModel registerModel)
+        {
+            InventorsRepository inventors = new InventorsRepository();
+            inventors.AddInventor(registerModel.ToInventor());
+            /*LoginModel model = new LoginModel
+            {
+                Manager = false,
+                Name = registerModel.FullName,
+                Password = registerModel.Password
+            };
+            await Login(model);//redirect to login(post)*/
+            return RedirectToAction("Login", "Account");
+        }
     } 
 }

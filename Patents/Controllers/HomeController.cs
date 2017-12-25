@@ -10,8 +10,10 @@ namespace Patents.Controllers
         public ActionResult Index()
         {
             var roles = new RolesRepository().Roles;
-            var states = new StateRepository().States;
-            return View(states.Select(x => x.StateId.ToString() + ". " + x.Info));
+            var states = new StatesRepository().States;
+            var registers = new RegistersRepository().Registers;
+            var inventors = new InventorsRepository().Inventors;
+            return View(inventors.Select(x => x.Name + " | " + x.Password));
         }
 
         [Authorize(Roles = "Administrator")]

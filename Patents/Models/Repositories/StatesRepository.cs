@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Patents.Models.Repositories
 {
-    public class StateRepository
+    public class StatesRepository
     {
         private EFDBContext context = new EFDBContext();
         public IEnumerable<State> States

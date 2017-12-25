@@ -8,8 +8,10 @@ namespace Patents.Models
     {
         public int StatementId { get; set; }
         public DateTime SubmitDate { get; set; }
+        [Required]
         public string Name { get; set; }
-        public string Test { get; set; }
+        [Required]
+        public string Text { get; set; }
         public DateTime ConsidDate { get; set; }
         public string DenialReason { get; set; }
         [Required]
