@@ -36,7 +36,7 @@ namespace Tests
                 Email = "em",
                 Password = "123"
             };
-            Assert.Equal("text123", inv.Name + inv.Password);
+            Assert.Equal(0, inv.GetPersonId());
         }
 
         [Fact]
@@ -69,7 +69,9 @@ namespace Tests
                 RegisterId = 0,
                 Register = null,
                 StatementId = 0,
-                Statement = null
+                Statement = null,
+                IdeaId = 1,
+                Idea = null
             };
             Assert.Equal("00", meet.InventorId.ToString() + meet.RegisterId);
         }
@@ -86,7 +88,8 @@ namespace Tests
                 RegisterId = 0,
                 Register = null,
                 StateId = 0,
-                State = null
+                State = null,
+                Date = new System.DateTime()
             };
             Assert.Equal("00", payment.InventorId.ToString() + payment.RegisterId);
         }
@@ -103,7 +106,7 @@ namespace Tests
                 RegisterId = 0,
                 Email = null
             };
-            Assert.Equal("00", register.RoleId.ToString() + register.RegisterId);
+            Assert.Equal(0, register.GetPersonId());
         }
 
         [Fact]
@@ -137,7 +140,8 @@ namespace Tests
                 SubmitDate = new System.DateTime(),
                 StatementId = 0,
                 Name = "0",
-                
+                DenialReason = "-",
+                Text = "text",
                 StateId = 0,
                 State = null
             };
