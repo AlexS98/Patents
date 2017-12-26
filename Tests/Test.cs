@@ -11,6 +11,18 @@ namespace Tests
     public class Test
     {
         [Fact]
+        public void EntitiesIdeaTest()
+        {
+            Idea idea = new Idea
+            {
+                IdeaId = 0,
+                Text = "text",
+                References = "Ref"
+            };
+            Assert.Equal(0, idea.IdeaId);
+            Assert.Equal("Ref", idea.References);
+        }
+        [Fact]
         public void IndexTest()
         {
             var mock = new Mock<IInventorsRepository>();
