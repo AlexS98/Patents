@@ -336,5 +336,60 @@ namespace Tests
             ViewResult result = controller.RegistersTable() as ViewResult;
             Assert.NotNull(result);
         }
+
+        [Fact]
+        public void InventorsViewTest()
+        {
+            InventorsView view = new InventorsView
+            {
+                Id = "0",
+                Adress = "south",
+                Email = "kfn@dkfm",
+                Name = "djkfv"
+            };
+            Assert.Equal("south", view.Adress);
+        }
+
+        [Fact]
+        public void MeetingsViewTest()
+        {
+            MeetingsView view = new MeetingsView
+            {
+                Date = "0",
+                InventorName = "south",
+                RegisterName = "vm",
+                State = "djkfv"
+            };
+            Assert.Equal("vm", view.RegisterName);
+        }
+
+        [Fact]
+        public void PatentsViewTest()
+        {
+            PatentsView view = new PatentsView
+            {
+                InventorId = "0",
+                InventorName = "south",
+                RegisterName = "vm",
+                StatementState = "djkfv",
+                PatentId = "dkgjv",
+                RegisterId = "rg",
+                Sum = "16.00m"
+            };
+            Assert.Equal("16.00m", view.Sum);
+        }
+
+        [Fact]
+        public void RegistersViewTest()
+        {
+            RegistersView view = new RegistersView
+            {
+                Id = "0",
+                Name = "south",
+                Email = "vm",
+                Role = "djkfv"
+            };
+            Assert.Equal("djkfv", view.Role);
+        }
     }
 }
