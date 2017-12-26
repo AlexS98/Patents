@@ -53,7 +53,8 @@ namespace Tests
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
             InventorsController controller = new InventorsController(mock.Object);
-            ViewResult result = controller.FindByParams(new InventorsView(), true) as ViewResult;
+            InventorsView view = new InventorsView { Id = "0", Adress = "adr", Email = "em", Name = "name"};
+            ViewResult result = controller.FindByParams(view, true) as ViewResult;
             Assert.NotNull(result);
         }
         [Fact]
