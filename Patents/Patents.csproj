@@ -120,10 +120,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventorsController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
+    <Compile Include="Controllers\PatentsController.cs" />
     <Compile Include="Controllers\RegistersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712250812030_InitialCreate.cs" />
+    <Compile Include="Migrations\201712250812030_InitialCreate.Designer.cs">
+      <DependentUpon>201712250812030_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContextInitializer.cs" />
     <Compile Include="Models\EFDBContext.cs" />
     <Compile Include="Models\Entities\Idea.cs" />
@@ -148,6 +154,7 @@
     <Compile Include="Models\ViewModels\InventorsView.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\MeetingsView.cs" />
+    <Compile Include="Models\ViewModels\PatentsView.cs" />
     <Compile Include="Models\ViewModels\RegisterModel.cs" />
     <Compile Include="Models\ViewModels\RegistersView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,6 +176,8 @@
     </Content>
     <Content Include="Views\Registers\SearchingForm.cshtml" />
     <Content Include="Views\Registers\RegistersTable.cshtml" />
+    <Content Include="Views\Patents\PatentsTable.cshtml" />
+    <Content Include="Views\Patents\SearchingForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -178,6 +187,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712250812030_InitialCreate.resx">
+      <DependentUpon>201712250812030_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

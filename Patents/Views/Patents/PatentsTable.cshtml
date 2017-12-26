@@ -1,0 +1,60 @@
+﻿@using Patents.Models
+@model IEnumerable<Patent>
+@{
+    ViewBag.Title = "PatentsTable";
+}
+<style>
+    #cartTable td {
+        vertical-align: middle
+    }
+</style>
+<h2 class="text-center">Patents</h2>
+<hr />
+<table id="cartTable" class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center">PatentId</th>
+            <th class="text-center">Inventor</th>
+            <th class="text-center">Register</th>
+            <th class="text-center">Adress</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Idea</th>
+            <th class="text-center">Sum</th>
+            <th class="text-center">State</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var i in Model)
+            {
+                <tr>
+                    <td class="text-center">@i.PatentId</td>
+                    <td class="text-center">@i.Inventor.Name</td>
+                    <td class="text-center">@i.Register.Name</td>
+                    <td class="text-center">@i.Inventor.Adress</td>
+                    <td class="text-center">@i.Inventor.Email</td>
+                    <td class="text-center">@i.Idea.Text</td>
+                    <td class="text-center">@i.Sum</td>
+                    <td class="text-center">@i.Statement.State.Info</td>
+                </tr>
+            }
+        }
+        else
+        {
+                <tr>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                    <td class="text-center">No data!</td>
+                </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+@Html.Action("SearchingForm", "Patents")
