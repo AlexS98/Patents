@@ -13,6 +13,7 @@ ignore:
   - Patents/Migrations/.*
   - Patents/Models/AccountModels/.*
   - Patents/Controllers/AccountController.cs
+  - Patents/Controllers/MeetingsController.cs
   - Patents/Models/ViewModels/LoginModel
   - Patents/Models/ViewModels/RegisterModel
   - Patents/Models/Repositories/.*
