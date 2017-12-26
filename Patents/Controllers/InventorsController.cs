@@ -19,10 +19,15 @@ namespace Patents.Controllers
             inventor = new InventorsRepository();
             s = inventor.Inventors;
         }
-        // GET: Inventors
-        public ActionResult ShowAllData()
+
+        public InventorsController(IInventorsRepository rep)
         {
-            s = inventor.Inventors;
+            s = rep.Inventors;
+        }
+        // GET: Inventors
+        public ActionResult ShowAllData(bool test = false)
+        {
+            if(!test) s = inventor.Inventors;
             return View("InventorsTable", s);
         }
 
@@ -37,9 +42,9 @@ namespace Patents.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindByParams(InventorsView param)
+        public ActionResult FindByParams(InventorsView param, bool test = false)
         {
-            s = inventor.Inventors;
+            if(!test) s = inventor.Inventors;
             string id = param.Id;
             if (param.Id != null)
                 s = s.Where(x => x.InventorId.ToString() == id).Select(x => x);
