@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Patents.Models.Repositories
 {
-    public class InventorsRepository
+    public class InventorsRepository : IInventorsRepository
     {
         private EFDBContext context = new EFDBContext();
         public IEnumerable<Inventor> Inventors

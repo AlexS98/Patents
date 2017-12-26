@@ -9,4 +9,9 @@ coverage:
 
 ignore:
   - Patents/App_Start/.*
-  - Patents/Global.asax.cs
+  - Patents/Global.asax.cs 
+  - Patents/Migrations/.*
+  - Patents/Models/AccountModels/.*
+  - Patents/Controllers/AccountController.cs
+  - Patents/Models/ViewModels/.*
+  - Patents/Models/Repositories/.*

@@ -1,10 +1,8 @@
 ﻿using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Patents.Controllers
