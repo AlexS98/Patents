@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Patents.Models.Repositories
 {
-    public class PatentsRepository
+    public class PatentsRepository : IPatentsRepository
     {
         private EFDBContext context = new EFDBContext();
         public IEnumerable<Patent> Patents

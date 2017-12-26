@@ -1,18 +1,14 @@
 ﻿using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Patents.Controllers
 {
     public class PatentsController : Controller
     {
-
-
         PatentsRepository patent;
         IEnumerable<Patent> s = null;
 
@@ -21,10 +17,17 @@ namespace Patents.Controllers
             patent = new PatentsRepository();
             s = patent.Patents;
         }
-        // GET: Inventors
-        public ActionResult ShowAllData()
+        public PatentsController(IPatentsRepository rep = null, bool test = false)
         {
-            s = patent.Patents;
+            if (test)
+            {
+                s = rep.Patents;
+            }
+        }
+        // GET: Inventors
+        public ActionResult ShowAllData(bool test = false)
+        {
+            if(!test) s = patent.Patents;
             return View("PatentsTable", s);
         }
 
@@ -39,9 +42,9 @@ namespace Patents.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindByParams(PatentsView param)
+        public ActionResult FindByParams(PatentsView param, bool test = false)
         {
-            s = patent.Patents;
+            if(!test) s = patent.Patents;
             string id = param.PatentId;
             if (param.PatentId != null)
                 s = s.Where(x => x.PatentId.ToString() == id).Select(x => x);

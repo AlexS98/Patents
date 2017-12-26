@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Patents.Models.TestInterfaces;
+using System.Collections.Generic;
 
 namespace Patents.Models.Repositories
 {
-    public class RegistersRepository
+    public class RegistersRepository : IRegistersRepository
     {
         private EFDBContext context = new EFDBContext();
         public IEnumerable<Register> Registers

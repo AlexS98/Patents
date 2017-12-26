@@ -3,6 +3,7 @@ using Patents.Controllers;
 using Patents.Models;
 using Patents.Models.Entities;
 using Patents.Models.Repositories;
+using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -204,6 +205,135 @@ namespace Tests
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
             InventorsController controller = new InventorsController(mock.Object, true);
             ViewResult result = controller.InventorsTable() as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        //***************************************
+
+        [Fact]
+        public void Meetings1Test()
+        {
+            var mock = new Mock<IMeetingsRepository>();
+            mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
+            MeetingsController controller = new MeetingsController(mock.Object, true);
+            ViewResult result = controller.ShowAllData(true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Meetings2Test()
+        {
+            var mock = new Mock<IMeetingsRepository>();
+            mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
+            MeetingsController controller = new MeetingsController(mock.Object, true);
+            MeetingsView view = new MeetingsView { InventorName = "name", Date = "-", RegisterName = "adr", State = "em"};
+            ViewResult result = controller.FindByParams(view, true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Meetings3Test()
+        {
+            var mock = new Mock<IMeetingsRepository>();
+            mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
+            MeetingsController controller = new MeetingsController(mock.Object, true);
+            PartialViewResult result = controller.ShowAll() as PartialViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Meetings4Test()
+        {
+            var mock = new Mock<IMeetingsRepository>();
+            mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
+            MeetingsController controller = new MeetingsController(mock.Object, true);
+            ViewResult result = controller.MeetingsTable() as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        //***********************************************
+
+        [Fact]
+        public void Patents1Test()
+        {
+            var mock = new Mock<IPatentsRepository>();
+            mock.Setup(a => a.Patents).Returns(new List<Patent>());
+            PatentsController controller = new PatentsController(mock.Object, true);
+            ViewResult result = controller.ShowAllData(true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Patents2Test()
+        {
+            var mock = new Mock<IPatentsRepository>();
+            mock.Setup(a => a.Patents).Returns(new List<Patent>());
+            PatentsController controller = new PatentsController(mock.Object, true);
+            PatentsView view = new PatentsView { InventorName = "name", InventorId = "-", PatentId = "adr", RegisterId = "em", RegisterName = "em", StatementState = "em", Sum = "em" };
+            ViewResult result = controller.FindByParams(view, true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Patents3Test()
+        {
+            var mock = new Mock<IPatentsRepository>();
+            mock.Setup(a => a.Patents).Returns(new List<Patent>());
+            PatentsController controller = new PatentsController(mock.Object, true);
+            PartialViewResult result = controller.SearchingForm() as PartialViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Patents4Test()
+        {
+            var mock = new Mock<IPatentsRepository>();
+            mock.Setup(a => a.Patents).Returns(new List<Patent>());
+            PatentsController controller = new PatentsController(mock.Object, true);
+            ViewResult result = controller.PatentsTable() as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        //***********************************
+
+        [Fact]
+        public void Registers1Test()
+        {
+            var mock = new Mock<IRegistersRepository>();
+            mock.Setup(a => a.Registers).Returns(new List<Register>());
+            RegistersController controller = new RegistersController(mock.Object, true);
+            ViewResult result = controller.ShowAllData(true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Registers2Test()
+        {
+            var mock = new Mock<IRegistersRepository>();
+            mock.Setup(a => a.Registers).Returns(new List<Register>());
+            RegistersController controller = new RegistersController(mock.Object, true);
+            RegistersView view = new RegistersView { Id = "0", Role = "adr", Email = "em", Name = "name" };
+            ViewResult result = controller.FindByParams(view, true) as ViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Registers3Test()
+        {
+            var mock = new Mock<IRegistersRepository>();
+            mock.Setup(a => a.Registers).Returns(new List<Register>());
+            RegistersController controller = new RegistersController(mock.Object, true);
+            PartialViewResult result = controller.SearchingForm() as PartialViewResult;
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Registers4Test()
+        {
+            var mock = new Mock<IRegistersRepository>();
+            mock.Setup(a => a.Registers).Returns(new List<Register>());
+            RegistersController controller = new RegistersController(mock.Object, true);
+            ViewResult result = controller.RegistersTable() as ViewResult;
             Assert.NotNull(result);
         }
     }

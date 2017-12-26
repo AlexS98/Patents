@@ -1,5 +1,6 @@
 ﻿using Patents.Models;
 using Patents.Models.Repositories;
+using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,17 @@ namespace Patents.Controllers
             register = new RegistersRepository();
             s = register.Registers;
         }
-        // GET: Inventors
-        public ActionResult ShowAllData()
+        public RegistersController(IRegistersRepository rep = null, bool test = false)
         {
-            s = register.Registers;
+            if (test)
+            {
+                s = rep.Registers;
+            }
+        }
+        // GET: Inventors
+        public ActionResult ShowAllData(bool test = false)
+        {
+            if(!test) s = register.Registers;
             return View("RegistersTable", s);
         }
 
@@ -35,9 +43,9 @@ namespace Patents.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindByParams(RegistersView param)
+        public ActionResult FindByParams(RegistersView param, bool test = false)
         {
-            s = register.Registers;
+            if(!test) s = register.Registers;
             string id = param.Id;
             if (param.Id != null)
                 s = s.Where(x => x.RegisterId.ToString() == id).Select(x => x);

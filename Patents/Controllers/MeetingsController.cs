@@ -11,15 +11,23 @@ namespace Patents.Controllers
     {
         MeetingsRepository meeting;
         IEnumerable<Meeting> s = null;
-        public MeetingsController()
-        {
+
+        public MeetingsController() {
             meeting = new MeetingsRepository();
             s = meeting.Meetings;
         }
 
-        public ActionResult ShowAllData()
+        public MeetingsController(IMeetingsRepository rep = null, bool test = false)
         {
-            s = meeting.Meetings;
+            if (test)
+            {
+                s = rep.Meetings;
+            }
+        }
+
+        public ActionResult ShowAllData(bool test = false)
+        {
+            if (!test) s = meeting.Meetings;
             return View("MeetingsTable", s);
         }
 
@@ -34,9 +42,9 @@ namespace Patents.Controllers
         }
 
         [HttpPost]
-        public ActionResult FindByParams(MeetingsView param)
+        public ActionResult FindByParams(MeetingsView param, bool test = false)
         {
-            s = meeting.Meetings;
+            if(!test) s = meeting.Meetings;
             string state = param.State;
             if(param.State != null )
                 s = s.Where(x => x.State.Info == state).Select(x => x);

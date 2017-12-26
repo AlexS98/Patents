@@ -2,7 +2,7 @@
 
 namespace Patents.Models.Repositories
 {
-    public class MeetingsRepository
+    public class MeetingsRepository : IMeetingsRepository
     {
         private EFDBContext context = new EFDBContext();
         public IEnumerable<Meeting> Meetings
