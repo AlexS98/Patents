@@ -14,15 +14,16 @@ namespace Patents.Controllers
         InventorsRepository inventor;
         IEnumerable<Inventor> s = null;
 
-        public InventorsController()
+        public InventorsController(IInventorsRepository rep, bool test = false)
         {
-            inventor = new InventorsRepository();
-            s = inventor.Inventors;
-        }
-
-        public InventorsController(IInventorsRepository rep)
-        {
-            s = rep.Inventors;
+            if (!test)
+            {
+                inventor = new InventorsRepository();
+                s = inventor.Inventors;
+            }
+            else {
+                s = rep.Inventors;
+            }
         }
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
