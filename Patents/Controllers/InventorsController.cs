@@ -10,7 +10,7 @@ namespace Patents.Controllers
     public class InventorsController : Controller
     {
         InventorsRepository inventor;
-        IEnumerable<Inventor> s = null;
+        IEnumerable<Inventor> s;
 
         public InventorsController()
         {

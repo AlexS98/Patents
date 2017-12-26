@@ -15,7 +15,7 @@ namespace Tests
     {
 
         [Fact]
-        public void EntitiesIdeaTest()
+        public static void EntitiesIdeaTest()
         {
             Idea idea = new Idea
             {
@@ -27,7 +27,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesInventorTest()
+        public static void EntitiesInventorTest()
         {
             Inventor inv = new Inventor
             {
@@ -41,7 +41,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesMeetingTest()
+        public static void EntitiesMeetingTest()
         {
             Meeting meet = new Meeting
             {
@@ -59,7 +59,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesPatentTest()
+        public static void EntitiesPatentTest()
         {
             Patent meet = new Patent
             {
@@ -78,7 +78,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesPaymentTest()
+        public static void EntitiesPaymentTest()
         {
             Payment payment = new Payment
             {
@@ -96,7 +96,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesRegisterTest()
+        public static void EntitiesRegisterTest()
         {
             Register register = new Register
             {
@@ -111,7 +111,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesRoleTest()
+        public static void EntitiesRoleTest()
         {
             Role role = new Role
             {
@@ -122,7 +122,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesStateTest()
+        public static void EntitiesStateTest()
         {
             State state = new State
             {
@@ -133,7 +133,7 @@ namespace Tests
         }
 
         [Fact]
-        public void EntitiesStatementTest()
+        public static void EntitiesStatementTest()
         {
             Statement statement = new Statement
             {
@@ -150,7 +150,7 @@ namespace Tests
         }
 
         [Fact]
-        public void IndexTest()
+        public static void IndexTest()
         {
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
@@ -160,7 +160,7 @@ namespace Tests
         }
 
         [Fact]
-        public void TestTest()
+        public static void TestTest()
         {
             HomeController controller = new HomeController();
             ViewResult result = controller.Test() as ViewResult;
@@ -168,7 +168,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Inventors1Test()
+        public static void Inventors1Test()
         {
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
@@ -178,7 +178,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Inventors2Test()
+        public static void Inventors2Test()
         {
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
@@ -189,7 +189,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Inventors3Test()
+        public static void Inventors3Test()
         {
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
@@ -199,7 +199,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Inventors4Test()
+        public static void Inventors4Test()
         {
             var mock = new Mock<IInventorsRepository>();
             mock.Setup(a => a.Inventors).Returns(new List<Inventor>());
@@ -211,7 +211,7 @@ namespace Tests
         //***************************************
 
         [Fact]
-        public void Meetings1Test()
+        public static void Meetings1Test()
         {
             var mock = new Mock<IMeetingsRepository>();
             mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
@@ -221,7 +221,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Meetings2Test()
+        public static void Meetings2Test()
         {
             var mock = new Mock<IMeetingsRepository>();
             mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
@@ -232,7 +232,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Meetings3Test()
+        public static void Meetings3Test()
         {
             var mock = new Mock<IMeetingsRepository>();
             mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
@@ -242,7 +242,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Meetings4Test()
+        public static void Meetings4Test()
         {
             var mock = new Mock<IMeetingsRepository>();
             mock.Setup(a => a.Meetings).Returns(new List<Meeting>());
@@ -254,7 +254,7 @@ namespace Tests
         //***********************************************
 
         [Fact]
-        public void Patents1Test()
+        public static void Patents1Test()
         {
             var mock = new Mock<IPatentsRepository>();
             mock.Setup(a => a.Patents).Returns(new List<Patent>());
@@ -264,7 +264,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Patents2Test()
+        public static void Patents2Test()
         {
             var mock = new Mock<IPatentsRepository>();
             mock.Setup(a => a.Patents).Returns(new List<Patent>());
@@ -275,7 +275,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Patents3Test()
+        public static void Patents3Test()
         {
             var mock = new Mock<IPatentsRepository>();
             mock.Setup(a => a.Patents).Returns(new List<Patent>());
@@ -285,7 +285,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Patents4Test()
+        public static void Patents4Test()
         {
             var mock = new Mock<IPatentsRepository>();
             mock.Setup(a => a.Patents).Returns(new List<Patent>());
@@ -297,7 +297,7 @@ namespace Tests
         //***********************************
 
         [Fact]
-        public void Registers1Test()
+        public static void Registers1Test()
         {
             var mock = new Mock<IRegistersRepository>();
             mock.Setup(a => a.Registers).Returns(new List<Register>());
@@ -307,7 +307,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Registers2Test()
+        public static void Registers2Test()
         {
             var mock = new Mock<IRegistersRepository>();
             mock.Setup(a => a.Registers).Returns(new List<Register>());
@@ -318,7 +318,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Registers3Test()
+        public static void Registers3Test()
         {
             var mock = new Mock<IRegistersRepository>();
             mock.Setup(a => a.Registers).Returns(new List<Register>());
@@ -328,7 +328,7 @@ namespace Tests
         }
 
         [Fact]
-        public void Registers4Test()
+        public static void Registers4Test()
         {
             var mock = new Mock<IRegistersRepository>();
             mock.Setup(a => a.Registers).Returns(new List<Register>());
@@ -338,7 +338,7 @@ namespace Tests
         }
 
         [Fact]
-        public void InventorsViewTest()
+        public static void InventorsViewTest()
         {
             InventorsView view = new InventorsView
             {
@@ -351,7 +351,7 @@ namespace Tests
         }
 
         [Fact]
-        public void MeetingsViewTest()
+        public static void MeetingsViewTest()
         {
             MeetingsView view = new MeetingsView
             {
@@ -364,7 +364,7 @@ namespace Tests
         }
 
         [Fact]
-        public void PatentsViewTest()
+        public static void PatentsViewTest()
         {
             PatentsView view = new PatentsView
             {
@@ -380,7 +380,7 @@ namespace Tests
         }
 
         [Fact]
-        public void RegistersViewTest()
+        public static void RegistersViewTest()
         {
             RegistersView view = new RegistersView
             {

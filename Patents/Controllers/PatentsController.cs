@@ -10,7 +10,7 @@ namespace Patents.Controllers
     public class PatentsController : Controller
     {
         PatentsRepository patent;
-        IEnumerable<Patent> s = null;
+        IEnumerable<Patent> s;
 
         public PatentsController()
         {
@@ -27,7 +27,7 @@ namespace Patents.Controllers
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {
-            if(!test) s = patent.Patents;
+            if (!test) { s = patent.Patents; }
             return View("PatentsTable", s);
         }
 
@@ -44,10 +44,12 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(PatentsView param, bool test = false)
         {
-            if(!test) s = patent.Patents;
+            if (!test) { s = patent.Patents; }
             string id = param.PatentId;
             if (param.PatentId != null)
+            {
                 s = s.Where(x => x.PatentId.ToString() == id).Select(x => x);
+            }
             //string inventorId = param.InventorId;
             //if (param.InventorId != null)
             //    s = s.Where(x => x.InventorId.ToString() == inventorId).Select(x => x);
@@ -56,16 +58,16 @@ namespace Patents.Controllers
             //    s = s.Where(x => x.RegisterId.ToString() == inventorId).Select(x => x);
             string state = param.StatementState;
             if (param.StatementState != null)
-                s = s.Where(x => x.Statement.State.Info == state).Select(x => x);
+            { s = s.Where(x => x.Statement.State.Info == state).Select(x => x); }
             string inventorName = param.InventorName;
             if (param.InventorName != null)
-                s = s.Where(x => x.Inventor.Name == inventorName).Select(x => x);
+            { s = s.Where(x => x.Inventor.Name == inventorName).Select(x => x); }
             string registerName = param.RegisterName;
             if (param.RegisterName != null)
-                s = s.Where(x => x.Register.Name == registerName).Select(x => x);
+            { s = s.Where(x => x.Register.Name == registerName).Select(x => x); }
             string sum = param.Sum;
             if (param.Sum != null)
-                s = s.Where(x => x.Sum.ToString() == sum).Select(x => x);
+            { s = s.Where(x => x.Sum.ToString() == sum).Select(x => x); }
             return View("PatentsTable", s);
         }
     }

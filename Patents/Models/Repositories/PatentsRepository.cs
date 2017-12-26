@@ -7,7 +7,7 @@ namespace Patents.Models.Repositories
 {
     public class PatentsRepository : IPatentsRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Patent> Patents
         {
             get
@@ -20,29 +20,37 @@ namespace Patents.Models.Repositories
                 foreach (var i in patents)
                 {
                     foreach (var j in statements)
+                    {
                         if (i.StatementId == j.StatementId)
                         {
                             i.Statement = j;
                             break;
                         }
+                    }
                     foreach (var k in inventors)
+                    {
                         if (i.InventorId == k.InventorId)
                         {
                             i.Inventor = k;
                             break;
                         }
+                    }
                     foreach (var r in registers)
+                    {
                         if (i.RegisterId == r.RegisterId)
                         {
                             i.Register = r;
                             break;
                         }
+                    }
                     foreach (var d in ideas)
+                    {
                         if (i.IdeaId == d.IdeaId)
                         {
                             i.Idea = d;
                             break;
                         }
+                    }
                 }
                 return patents;
             }

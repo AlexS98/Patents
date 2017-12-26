@@ -10,7 +10,7 @@ namespace Patents.Controllers
     public class MeetingsController : Controller
     {
         MeetingsRepository meeting;
-        IEnumerable<Meeting> s = null;
+        IEnumerable<Meeting> s;
 
         public MeetingsController() {
             meeting = new MeetingsRepository();
@@ -27,7 +27,7 @@ namespace Patents.Controllers
 
         public ActionResult ShowAllData(bool test = false)
         {
-            if (!test) s = meeting.Meetings;
+            if (!test) { s = meeting.Meetings; }
             return View("MeetingsTable", s);
         }
 

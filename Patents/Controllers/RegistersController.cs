@@ -11,7 +11,7 @@ namespace Patents.Controllers
     public class RegistersController : Controller
     {
         RegistersRepository register;
-        IEnumerable<Register> s = null;
+        IEnumerable<Register> s;
 
         public RegistersController()
         {
@@ -28,7 +28,7 @@ namespace Patents.Controllers
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {
-            if(!test) s = register.Registers;
+            if (!test) { s = register.Registers; }
             return View("RegistersTable", s);
         }
 
@@ -45,19 +45,27 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(RegistersView param, bool test = false)
         {
-            if(!test) s = register.Registers;
+            if (!test) { s = register.Registers; }
             string id = param.Id;
             if (param.Id != null)
-                s = s.Where(x => x.RegisterId.ToString() == id).Select(x => x);
+            {
+                s = s.Where(x => x.RegisterId.ToString() == id).Select(x => x); }
+
             string inventorName = param.Name;
             if (param.Name != null)
+            {
                 s = s.Where(x => x.Name == inventorName).Select(x => x);
+            }
             string email = param.Email;
             if (param.Email != null)
+            {
                 s = s.Where(x => x.Email == email).Select(x => x);
+            }
             string role = param.Role;
             if (param.Role != null)
+            {
                 s = s.Where(x => x.Role.UserRole == role).Select(x => x);
+            }
             return View("RegistersTable", s);
         }
     }

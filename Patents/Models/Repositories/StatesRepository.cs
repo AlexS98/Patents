@@ -5,7 +5,7 @@ namespace Patents.Models.Repositories
 {
     public class StatesRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<State> States
         {
             get { return context.States; }

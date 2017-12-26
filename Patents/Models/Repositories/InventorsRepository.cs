@@ -5,7 +5,7 @@ namespace Patents.Models.Repositories
 {
     public class InventorsRepository : IInventorsRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Inventor> Inventors
         {
             get

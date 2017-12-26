@@ -4,7 +4,7 @@ namespace Patents.Models.Repositories
 {
     public class StatementsRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Statement> Statements
         {
             get
@@ -12,8 +12,12 @@ namespace Patents.Models.Repositories
                 var statements = context.Statements;
                 var state = new StatesRepository().States;
                 foreach (var i in statements)
+                {
                     foreach (var j in state)
-                        if (i.StateId == j.StateId) i.State = j;
+                    {
+                        if (i.StateId == j.StateId) { i.State = j; }
+                    }
+                }
                 return statements;
             }
         }

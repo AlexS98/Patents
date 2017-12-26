@@ -7,7 +7,7 @@ namespace Patents.Models.Repositories
 {
     public class IdeasRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Idea> Ideas
         {
             get

@@ -4,7 +4,7 @@ namespace Patents.Models.Repositories
 {
     public class RolesRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Role> Roles
         {
             get { return context.Roles; }

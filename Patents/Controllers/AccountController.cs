@@ -13,7 +13,7 @@ namespace Patents.Controllers
 {
     public class AccountController : Controller
     {
-        EFDBContext db = new EFDBContext();
+        readonly EFDBContext db = new EFDBContext();
         private IAuthenticationManager AuthenticationManager
         {
             get
@@ -36,13 +36,16 @@ namespace Patents.Controllers
             {
                 Person user = null;
                 Role role = null;
-                if (!model.Manager) user = await db.Inventors.FirstOrDefaultAsync(u => u.Name == model.Name && u.Password == model.Password);
+                if (!model.Manager)
+                {
+                    user = await db.Inventors.FirstOrDefaultAsync(u => u.Name == model.Name && u.Password == model.Password);
+                }
                 else
                 {
                     Register register = await db.Registers.FirstOrDefaultAsync(u => u.Name == model.Name && u.Password == model.Password);
                     if (register != null)
                     {
-                        role = await db.Roles.FirstOrDefaultAsync(u => u.RoleId == register.RoleId); 
+                        role = await db.Roles.FirstOrDefaultAsync(u => u.RoleId == register.RoleId);
                         user = register as Person;
                     }
                 }

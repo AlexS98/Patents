@@ -5,7 +5,7 @@ namespace Patents.Models.Repositories
 {
     public class RegistersRepository : IRegistersRepository
     {
-        private EFDBContext context = new EFDBContext();
+        private readonly EFDBContext context = new EFDBContext();
         public IEnumerable<Register> Registers
         {
             get
@@ -13,8 +13,12 @@ namespace Patents.Models.Repositories
                 var reg = context.Registers;
                 var roles = new RolesRepository().Roles;
                 foreach (var i in reg)
-                    foreach(var j in roles)
-                        if(i.RoleId == j.RoleId) i.Role = j;
+                {
+                    foreach (var j in roles)
+                    {
+                        if (i.RoleId == j.RoleId) { i.Role = j; }
+                    }
+                }
                 return reg;
             }
         }
