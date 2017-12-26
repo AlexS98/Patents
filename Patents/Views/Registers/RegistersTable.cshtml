@@ -1,23 +1,22 @@
 ﻿@using Patents.Models
-@model IEnumerable<Meeting>
+@model IEnumerable<Register>
 @{
-    ViewBag.Title = "Meetings";
+    ViewBag.Title = "RegistersTable";
 }
 <style>
     #cartTable td {
         vertical-align: middle
     }
 </style>
-<h2 class="text-center">Meetings</h2>
+<h2 class="text-center">Registers</h2>
 <hr />
 <table id="cartTable" class="table table-striped">
     <thead>
         <tr>
-            <th class="text-center">Date</th>
-            <th class="text-center">Inventor</th>
-            <th class="text-center">Register</th>
-            <th class="text-center">State</th>
-            <th class="text-center">Additions</th>
+            <th class="text-center">InventorId</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Role</th>
         </tr>
     </thead>
     <tbody>
@@ -26,11 +25,10 @@
             foreach (var i in Model)
             {
                 <tr>
-                    <td class="text-center">@i.Date</td>
-                    <td class="text-center">@i.Inventor.Name</td>
-                    <td class="text-center">@i.Register.Name</td>
-                    <td class="text-center">@i.State.Info</td>
-                    <td class="text-center">@i.Additions</td>
+                    <td class="text-center">@i.RegisterId</td>
+                    <td class="text-center">@i.Name</td>
+                    <td class="text-center">@i.Email</td>
+                    <td class="text-center">@i.Role.UserRole</td>
                 </tr>
             }
         }
@@ -48,4 +46,4 @@
 </table>
 <hr />
 
-@Html.Action("ShowAll", "Meetings")
+@Html.Action("SearchingForm", "Registers")

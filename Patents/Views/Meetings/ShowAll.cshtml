@@ -1,23 +1,28 @@
 ﻿@model Patents.Models.ViewModels.MeetingsView
 
+<h3>Search</h3>
 @using (Html.BeginForm("FindByParams", "Meetings", FormMethod.Post))
 {
-    <div class="form-group">
-        @Html.LabelFor(model => model.State)
-        @Html.EditorFor(x => x.State)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.InventorName)
-        @Html.EditorFor(x => x.InventorName)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.RegisterName)
-        @Html.EditorFor(x => x.RegisterName)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Date)
-        @Html.EditorFor(x => x.Date)
-    </div>
+    <table class="table" style="width: 35%">
+        <tbody>
+            <tr>
+                <th>@Html.LabelFor(model => model.State)</th>
+                <th>@Html.EditorFor(x => x.State)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.InventorName)</th>
+                <th>@Html.EditorFor(x => x.InventorName)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.RegisterName)</th>
+                <th>@Html.EditorFor(x => x.RegisterName)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Date)</th>
+                <th>@Html.EditorFor(x => x.Date)</th>
+            </tr>
+        </tbody>
+    </table>
     <div class="form-group">
         <button type="submit" class="btn btn-primary login-button">Find by params</button>
     </div>

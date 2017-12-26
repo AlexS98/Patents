@@ -1,28 +1,28 @@
 ﻿@model Patents.Models.ViewModels.LoginModel
-@{ 
+@{
     ViewBag.Title = "Login";
 }
-
+<h2>Login</h2>
 @using (Html.BeginForm())
 {
     <hr />
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
-        @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(x => x.Name)
+        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+        @Html.EditorFor(x => x.Name, "", new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Password)
-        @Html.EditorFor(x => x.Password)
+        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+        @Html.EditorFor(x => x.Password, new { @class = "form-control" })
     </div>
     <div>
-        <h3>Manager @Html.CheckBoxFor(model => model.Manager)</h3>
+        @Html.LabelFor(model => model.Manager, new { @class = "control-label" })
+        @Html.CheckBoxFor(model => model.Manager)
     </div>
     <div>
         <button type="submit" class="btn btn-primary login-button">Log in</button>
-        <a href="@Url.Action("Register", "Account")"> Register </a>
+        @Html.ActionLink("Register", "Register", "Account", new { @class = "btn btn-primary login-button" })
     </div>
 
 }

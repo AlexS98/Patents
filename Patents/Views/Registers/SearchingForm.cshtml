@@ -1,0 +1,29 @@
+﻿@model Patents.Models.ViewModels.RegistersView
+
+<h3>Search</h3>
+@using (Html.BeginForm("FindByParams", "Registers", FormMethod.Post))
+{
+    <table class="table" style="width: 35%">
+        <tbody>
+            <tr>
+                <th>@Html.LabelFor(model => model.Id)</th>
+                <th>@Html.EditorFor(x => x.Id)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Name)</th>
+                <th>@Html.EditorFor(x => x.Name)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Email)</th>
+                <th>@Html.EditorFor(x => x.Email)</th>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Role)</th>
+                <th>@Html.EditorFor(x => x.Role)</th>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary login-button">Find by params</button>
+    </div>
+}

@@ -1,43 +1,60 @@
 ﻿@model Patents.Models.ViewModels.RegisterModel
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registration";
 }
 
-<h2>Register inventor</h2>
+<h2>Registration</h2>
 <hr />
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-<div>
-    @Html.ValidationSummary(true)
+<table class="table table-striped" style="width: 35%">
+    <tbody>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.EditorFor(x => x.FullName)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.Email)
+            </th>
+            <th>
+                @Html.EditorFor(x => x.Email)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.Address)
+            </th>
+            <th>
+                @Html.EditorFor(x => x.Address)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.Password)
+            </th>
+            <th>
+                @Html.EditorFor(x => x.Password)
+            </th>
+        </tr>
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.PasswordConfirm)
+            </th>
+            <th>
+                @Html.EditorFor(x => x.PasswordConfirm)
+            </th>
+        </tr>
+    </tbody>
+    </table>
+    <input type="submit" value="Register" class="btn btn-primary" />
 
-    <div>
-        @Html.LabelFor(model => model.FullName)
-        @Html.EditorFor(x => x.FullName)
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Email)
-        @Html.EditorFor(x => x.Email)
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Address)
-        @Html.EditorFor(x => x.Address)
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.Password)
-        @Html.EditorFor(x => x.Password)
-    </div>
-
-    <div>
-        @Html.LabelFor(model => model.PasswordConfirm)
-        @Html.EditorFor(x => x.PasswordConfirm)
-    </div>
-    <input type="submit" value="Register" />
-
-</div>
 }

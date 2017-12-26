@@ -1,11 +1,32 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-        @RenderBody()
+    <div class="navbar navbar-inverse" role="navigation">
+        @Html.ActionLink("PATENTS OFFICE", "Index", "Home", null, new { @class = "navbar-brand" })
+        @Html.ActionLink("Registration", "Register", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
+        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
+    </div>
+    <div class="row panel">
+        <div id="categories" class="col-xs-3">
+            <h2 class="text-center">MENU</h2>
+            <hr />
+            @Html.ActionLink("Inventors", "ShowAllData", "Inventors", null, new { @class = "btn btn-success btn-block btn-lg" })
+            <hr />
+            @Html.ActionLink("Registers", "ShowAllData", "Registers", null, new { @class = "btn btn-success btn-block btn-lg" })
+            <hr />
+            @Html.ActionLink("Meetings", "ShowAllData", "Meetings", null, new { @class = "btn btn-success btn-block btn-lg" })
+            <hr />
+        </div>
+        <div class="col-xs-8">
+            @RenderBody()
+        </div>
+    </div>
 </body>
 </html>
