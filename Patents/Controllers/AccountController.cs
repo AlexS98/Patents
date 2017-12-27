@@ -25,6 +25,7 @@ namespace Patents.Controllers
         [HttpGet]
         public ActionResult Login()
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             return View();
         }
 
@@ -58,7 +59,7 @@ namespace Patents.Controllers
                 {
                     ClaimsIdentity claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
                     claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.GetPersonId().ToString(), ClaimValueTypes.String));
-                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email, ClaimValueTypes.String));
+                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.Name, ClaimValueTypes.String));
                     claim.AddClaim(new Claim("http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider",
                         "OWIN Provider", ClaimValueTypes.String));
                     claim.AddClaim(new Claim(ClaimsIdentity.DefaultRoleClaimType, (role != null) ? role.UserRole : "Registred user", ClaimValueTypes.String));
@@ -77,6 +78,7 @@ namespace Patents.Controllers
 
         public ActionResult Logout()
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
@@ -84,6 +86,7 @@ namespace Patents.Controllers
         [HttpGet]
         public ActionResult Register()
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             return View();
         }
 
@@ -91,6 +94,7 @@ namespace Patents.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel registerModel)
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             InventorsRepository inventors = new InventorsRepository();
             inventors.AddInventor(registerModel.ToInventor());
             //LoginModel model = new LoginModel

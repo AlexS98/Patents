@@ -10,8 +10,16 @@
 <body>
     <div class="navbar navbar-inverse" role="navigation">
         @Html.ActionLink("PATENTS OFFICE", "Index", "Home", null, new { @class = "navbar-brand" })
-        @Html.ActionLink("Registration", "Register", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
-        @Html.ActionLink("Log in", "Login", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
+        @if (ViewBag.UserName != "")
+        {
+            @Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "btn btn-info pull-right btn-sm col-sm-1" })
+            <p class="btn btn-success pull-right btn-sm col-sm-1">Hello, @(ViewBag.UserName != "" ? ViewBag.UserName : "Unregistred user")</p>
+        }
+        else
+        {
+            @Html.ActionLink("Registration", "Register", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
+            @Html.ActionLink("Log in", "Login", "Account", null, new { @class = "btn btn-info pull-right btn-lg col-sm-1" })
+        }
     </div>
     <div class="row panel">
         <div id="categories" class="col-xs-3">

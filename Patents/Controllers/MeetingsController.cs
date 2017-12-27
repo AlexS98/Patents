@@ -1,8 +1,10 @@
-﻿using Patents.Models;
+﻿using Microsoft.Owin.Security;
+using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Patents.Controllers
@@ -11,13 +13,19 @@ namespace Patents.Controllers
     {
         MeetingsRepository meeting;
         IEnumerable<Meeting> s;
-
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
         public MeetingsController() {
             meeting = new MeetingsRepository();
             s = meeting.Meetings;
         }
 
-        public MeetingsController(IMeetingsRepository rep = null, bool test = false)
+        public MeetingsController(IMeetingsRepository rep, bool test)
         {
             if (test)
             {
@@ -27,12 +35,14 @@ namespace Patents.Controllers
 
         public ActionResult ShowAllData(bool test = false)
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             if (!test) { s = meeting.Meetings; }
             return View("MeetingsTable", s);
         }
 
         public ViewResult MeetingsTable()
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             return View(s);
         }
 
@@ -44,7 +54,8 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(MeetingsView param, bool test = false)
         {
-            if(!test) s = meeting.Meetings;
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
+            if (!test) s = meeting.Meetings;
             string state = param.State;
             if(param.State != null )
                 s = s.Where(x => x.State.Info == state).Select(x => x);

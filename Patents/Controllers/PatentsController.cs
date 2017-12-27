@@ -1,8 +1,10 @@
-﻿using Patents.Models;
+﻿using Microsoft.Owin.Security;
+using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Patents.Controllers
@@ -11,7 +13,13 @@ namespace Patents.Controllers
     {
         PatentsRepository patent;
         IEnumerable<Patent> s;
-
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
         public PatentsController()
         {
             patent = new PatentsRepository();
@@ -27,12 +35,14 @@ namespace Patents.Controllers
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             if (!test) { s = patent.Patents; }
             return View("PatentsTable", s);
         }
 
         public ViewResult PatentsTable()
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             return View(s);
         }
 
@@ -44,6 +54,7 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(PatentsView param, bool test = false)
         {
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
             if (!test) { s = patent.Patents; }
             string id = param.PatentId;
             if (param.PatentId != null)
