@@ -25,7 +25,10 @@
         {
             foreach (var i in Model)
             {
-                <tr>
+                var cl = "active";
+                if(i.State.Info == "Completed") { cl = "success"; }
+                else if(i.State.Info == "Canceled") { cl = "danger"; }
+                <tr class="@cl">
                     <td class="text-center">@i.Date</td>
                     <td class="text-center">@i.Inventor.Name</td>
                     <td class="text-center">@i.Register.Name</td>

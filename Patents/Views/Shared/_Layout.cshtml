@@ -33,6 +33,10 @@
             <hr />
             @Html.ActionLink("Meetings", "ShowAllData", "Meetings", null, new { @class = "btn btn-success btn-block btn-lg" })
             <hr />
+            <h2 class="text-center">ADMIN PANEL</h2>
+            <hr />
+            @Html.ActionLink("Managers", "Index", "Admin", null, new { @class = "btn btn-warning btn-block btn-lg" })
+            <hr />
         </div>
         <div class="col-xs-8">
             @RenderBody()

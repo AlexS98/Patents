@@ -126,6 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventorsController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
@@ -191,6 +192,8 @@
     <Content Include="Views\Registers\RegistersTable.cshtml" />
     <Content Include="Views\Patents\PatentsTable.cshtml" />
     <Content Include="Views\Patents\SearchingForm.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\AdminIndex.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
