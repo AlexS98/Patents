@@ -59,43 +59,6 @@ namespace Tests
         }
 
         [Fact]
-        public static void EntitiesPatentTest()
-        {
-            Patent meet = new Patent
-            {
-                PatentId = 0,
-                Sum = 16.00m,
-                InventorId = 0,
-                Inventor = null,
-                RegisterId = 0,
-                Register = null,
-                StatementId = 0,
-                Statement = null,
-                IdeaId = 1,
-                Idea = null
-            };
-            Assert.Equal("00", meet.InventorId.ToString() + meet.RegisterId);
-        }
-
-        [Fact]
-        public static void EntitiesPaymentTest()
-        {
-            Payment payment = new Payment
-            {
-                PaymentId = 0,
-                Sum = 16.00m,
-                InventorId = 0,
-                Inventor = null,
-                RegisterId = 0,
-                Register = null,
-                StateId = 0,
-                State = null,
-                Date = new System.DateTime()
-            };
-            Assert.Equal("00", payment.InventorId.ToString() + payment.RegisterId);
-        }
-
-        [Fact]
         public static void EntitiesRegisterTest()
         {
             Register register = new Register
