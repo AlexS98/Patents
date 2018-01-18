@@ -10,7 +10,7 @@ namespace Patents.Models.Repositories
             get
             {
                 var meetings = context.Meetings;
-                var state = new StatesRepository().States;
+                var state = new StatesRepository().State;
                 var inventors = new InventorsRepository().Inventors;
                 var registers = new RegistersRepository().Registers;
                 foreach (var i in meetings)

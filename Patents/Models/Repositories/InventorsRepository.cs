@@ -16,7 +16,7 @@ namespace Patents.Models.Repositories
 
         public Inventor GetByName(string name)
         {
-            return Inventors.FirstOrDefault(u => u.Name == name);
+            return Inventors.FirstOrDefault(u => u.FullName == name);
         }
 
         public void AddInventor(Inventor inventor)

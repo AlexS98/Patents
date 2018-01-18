@@ -10,7 +10,6 @@ namespace Patents.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Patents.Models.EFDBContext";
         }
 
         protected override void Seed(Patents.Models.EFDBContext context)

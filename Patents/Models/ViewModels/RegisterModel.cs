@@ -32,7 +32,7 @@ namespace Patents.Models.ViewModels
         {
             return new Inventor
             {
-                Name = this.FullName,
+                FullName = this.FullName,
                 Adress = this.Address,
                 Password = this.Password,
                 Email = this.Email

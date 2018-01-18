@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Patents.Models
 {
-    public class Statement
+    public class Request
     {
-        public int StatementId { get; set; }
+        public int RequestId { get; set; }
         public DateTime SubmitDate { get; set; }
         [Required]
         public string Name { get; set; }

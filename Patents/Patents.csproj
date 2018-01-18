@@ -135,9 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712250812030_InitialCreate.cs" />
-    <Compile Include="Migrations\201712250812030_InitialCreate.Designer.cs">
-      <DependentUpon>201712250812030_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201801181923017_Initial.cs" />
+    <Compile Include="Migrations\201801181923017_Initial.Designer.cs">
+      <DependentUpon>201801181923017_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContextInitializer.cs" />
@@ -151,8 +151,9 @@
     <Compile Include="Models\Entities\Register.cs" />
     <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Entities\State.cs" />
-    <Compile Include="Models\Entities\Statement.cs" />
+    <Compile Include="Models\Entities\Request.cs" />
     <Compile Include="Models\Repositories\IdeasRepository.cs" />
+    <Compile Include="Models\Repositories\IGenericRepository.cs" />
     <Compile Include="Models\TestInterfaces\IInventorsRepository.cs" />
     <Compile Include="Models\TestInterfaces\IMeetingsRepository.cs" />
     <Compile Include="Models\Repositories\InventorsRepository.cs" />
@@ -205,8 +206,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712250812030_InitialCreate.resx">
-      <DependentUpon>201712250812030_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801181923017_Initial.resx">
+      <DependentUpon>201801181923017_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

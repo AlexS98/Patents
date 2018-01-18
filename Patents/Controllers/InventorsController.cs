@@ -61,7 +61,7 @@ namespace Patents.Controllers
                 s = s.Where(x => x.InventorId.ToString() == id).Select(x => x);
             string inventorName = param.Name;
             if (param.Name != null)
-                s = s.Where(x => x.Name == inventorName).Select(x => x);
+                s = s.Where(x => x.FullName == inventorName).Select(x => x);
             string email = param.Email;
             if (param.Email != null)
                 s = s.Where(x => x.Email == email).Select(x => x);

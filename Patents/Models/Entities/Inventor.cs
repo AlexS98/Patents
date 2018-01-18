@@ -7,7 +7,7 @@ namespace Patents.Models
     {
         public int InventorId { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string FullName { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

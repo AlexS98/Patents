@@ -69,16 +69,16 @@ namespace Patents.Controllers
             //    s = s.Where(x => x.RegisterId.ToString() == inventorId).Select(x => x);
             string state = param.StatementState;
             if (param.StatementState != null)
-            { s = s.Where(x => x.Statement.State.Info == state).Select(x => x); }
+            { s = s.Where(x => x.Request.State.Info == state).Select(x => x); }
             string inventorName = param.InventorName;
             if (param.InventorName != null)
-            { s = s.Where(x => x.Inventor.Name == inventorName).Select(x => x); }
+            { s = s.Where(x => x.Inventor.FullName == inventorName).Select(x => x); }
             string registerName = param.RegisterName;
             if (param.RegisterName != null)
-            { s = s.Where(x => x.Register.Name == registerName).Select(x => x); }
+            { s = s.Where(x => x.Register.FullName == registerName).Select(x => x); }
             string sum = param.Sum;
             if (param.Sum != null)
-            { s = s.Where(x => x.Sum.ToString() == sum).Select(x => x); }
+            { s = s.Where(x => x.Payment.Sum.ToString() == sum).Select(x => x); }
             return View("PatentsTable", s);
         }
     }

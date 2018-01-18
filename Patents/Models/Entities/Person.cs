@@ -2,7 +2,7 @@
 {
     interface Person
     {
-        string Name { get; set; }
+        string FullName { get; set; }
         string Email { get; set; }
         string Password { get; set; }
         int GetPersonId();

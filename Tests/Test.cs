@@ -32,7 +32,7 @@ namespace Tests
             Inventor inv = new Inventor
             {
                 InventorId = 0,
-                Name = "text",
+                FullName = "text",
                 Adress = "Ref",
                 Email = "em",
                 Password = "123"
@@ -100,7 +100,7 @@ namespace Tests
         {
             Register register = new Register
             {
-                Name = "0",
+                FullName = "0",
                 Password = "16.00m",
                 RoleId = 0,
                 Role = null,
@@ -135,11 +135,11 @@ namespace Tests
         [Fact]
         public static void EntitiesStatementTest()
         {
-            Statement statement = new Statement
+            Request statement = new Request
             {
                 ConsidDate = new System.DateTime(),
                 SubmitDate = new System.DateTime(),
-                StatementId = 0,
+                RequestId = 0,
                 Name = "0",
                 DenialReason = "-",
                 Text = "text",

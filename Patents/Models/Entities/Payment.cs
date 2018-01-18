@@ -10,11 +10,7 @@ namespace Patents.Models
         public DateTime Date { get; set; }
         public decimal Sum { get; set; }
         [Required]
-        public int InventorId { get; set; }
-        public Inventor Inventor { get; set; }
-        [Required]
-        public int RegisterId { get; set; }
-        public Register Register { get; set; }
+        public string PaymentDetails { get; set; }
         [Required]
         public int StateId { get; set; }
         public State State { get; set; }

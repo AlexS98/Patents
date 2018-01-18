@@ -23,7 +23,7 @@ namespace Patents.Controllers
             //var registers = new RegistersRepository().Registers;
             var inventors = new InventorsRepository().Inventors;
             ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            return View(inventors.Select(x => x.Name + " | " + x.Password));
+            return View(inventors.Select(x => x.FullName + " | " + x.Password));
         }
 
         [Authorize(Roles = "Administrator")]

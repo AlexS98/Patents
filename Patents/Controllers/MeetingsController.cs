@@ -61,10 +61,10 @@ namespace Patents.Controllers
                 s = s.Where(x => x.State.Info == state).Select(x => x);
             string inventorName = param.InventorName;
             if (param.InventorName != null)
-                s = s.Where(x => x.Inventor.Name == inventorName).Select(x => x);
+                s = s.Where(x => x.Inventor.FullName == inventorName).Select(x => x);
             string registerName = param.RegisterName;
             if (param.RegisterName != null)
-                s = s.Where(x => x.Register.Name == registerName).Select(x => x);
+                s = s.Where(x => x.Register.FullName == registerName).Select(x => x);
             string date = param.Date;
             if (param.Date != null)
                 s = s.Where(x => x.Date.ToString() == date).Select(x => x);
