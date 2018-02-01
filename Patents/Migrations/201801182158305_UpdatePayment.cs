@@ -19,3 +19,4 @@ namespace Patents.Migrations
             DropColumn("dbo.Payments", "InventorId");
         }
     }
+}
