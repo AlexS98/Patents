@@ -1,19 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Patents.Models.Repositories
 {
-    public class IdeasRepository
+    public class IdeasRepository : IGenericRepository<Idea>
     {
         private readonly EFDBContext context = new EFDBContext();
-        public IEnumerable<Idea> Ideas
+        private IEnumerable<Idea> Ideas;
+        public IdeasRepository()
         {
-            get
-            {
-                return context.Ideas;
-            }
+            Ideas = context.Ideas;
+        }
+
+        public void Create(Idea item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Idea FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Idea> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Idea> Get(Func<Idea, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Idea item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Idea item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

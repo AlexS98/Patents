@@ -139,6 +139,10 @@
     <Compile Include="Migrations\201801181923017_Initial.Designer.cs">
       <DependentUpon>201801181923017_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801182158305_UpdatePayment.cs" />
+    <Compile Include="Migrations\201801182158305_UpdatePayment.Designer.cs">
+      <DependentUpon>201801182158305_UpdatePayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContextInitializer.cs" />
     <Compile Include="Models\EFDBContext.cs" />
@@ -208,6 +212,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801181923017_Initial.resx">
       <DependentUpon>201801181923017_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801182158305_UpdatePayment.resx">
+      <DependentUpon>201801182158305_UpdatePayment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,9 @@ namespace Patents.Models
         [Required]
         public string PaymentDetails { get; set; }
         [Required]
+        public int InventorId { get; set; }
+        public Inventor Inventor { get; set; }
+        [Required]
         public int StateId { get; set; }
         public State State { get; set; }
     }

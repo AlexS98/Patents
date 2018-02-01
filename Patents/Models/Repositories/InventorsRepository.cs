@@ -1,17 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Patents.Models.Repositories
 {
-    public class InventorsRepository : IInventorsRepository
+    public class InventorsRepository : IGenericRepository<Inventor>
     {
         private readonly EFDBContext context = new EFDBContext();
-        public IEnumerable<Inventor> Inventors
+        public IEnumerable<Inventor> Inventors;
+        public InventorsRepository()
         {
-            get
-            {
-                return context.Inventors;
-            }
+            Inventors = context.Inventors;
         }
 
         public Inventor GetByName(string name)
@@ -23,6 +22,36 @@ namespace Patents.Models.Repositories
         {
             context.Inventors.Add(inventor);
             context.SaveChanges();
+        }
+
+        public void Create(Inventor item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Inventor FindById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Inventor> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Inventor> Get(Func<Inventor, bool> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Inventor item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Inventor item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Patents.Models.Repositories
 {
-    public interface IGenericRepository<TEntity> where TEntity : class
+    public interface IGenericRepository<Entity> where Entity : class
     {
-        void Create(TEntity item);
-        TEntity FindById(int id);
-        IEnumerable<TEntity> Get();
-        IEnumerable<TEntity> Get(Func<TEntity, bool> predicate);
-        void Remove(TEntity item);
-        void Update(TEntity item);
+        void Create(Entity item);
+        Entity FindById(int id);
+        IEnumerable<Entity> Get();
+        IEnumerable<Entity> Get(Func<Entity, bool> predicate);
+        void Remove(Entity item);
+        void Update(Entity item);
     }
 }
