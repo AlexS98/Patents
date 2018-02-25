@@ -1,5 +1,4 @@
-﻿@using Patents.Models
-@model IEnumerable<Inventor>
+﻿@model IEnumerable<Patents.Models.Entities.Inventor>
 @{
     ViewBag.Title = "InventorsTable";
 }
@@ -26,7 +25,7 @@
             {
                 <tr>
                     <td class="text-center">@i.InventorId</td>
-                    <td class="text-center">@i.Name</td>
+                    <td class="text-center">@i.FullName</td>
                     <td class="text-center">@i.Email</td>
                     <td class="text-center">@i.Adress</td>
                 </tr>

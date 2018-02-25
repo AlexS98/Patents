@@ -3,47 +3,45 @@ using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Patents.Models.Entities;
+using Patents.Models.TestInterfaces;
 
 namespace Patents.Controllers
 {
     public class PatentsController : Controller
     {
-        PatentsRepository patent;
-        IEnumerable<Patent> s;
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private readonly GenericRepository<Patent> _patents;
+        private IEnumerable<Patent> _s;
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         public PatentsController()
         {
-            patent = new PatentsRepository();
-            s = patent.Patents;
+            _patents = new GenericRepository<Patent>();
+            _s = _patents.GetWithInclude(x => x.Inventor, x => x.Payment,x => x.Request.State, x => x.Idea, x => x.Register);
         }
         public PatentsController(IPatentsRepository rep = null, bool test = false)
         {
             if (test)
             {
-                s = rep.Patents;
+                _s = rep.Patents;
             }
         }
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) { s = patent.Patents; }
-            return View("PatentsTable", s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) { _s = _patents.GetWithInclude(x => x.Inventor, x => x.Payment, x => x.Request, x => x.Request.State, x => x.Idea, x => x.Register); }
+            return View("PatentsTable", _s);
         }
 
         public ViewResult PatentsTable()
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            return View(s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            return View(_s);
         }
 
         public PartialViewResult SearchingForm()
@@ -54,12 +52,12 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(PatentsView param, bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) { s = patent.Patents; }
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) { _s = _patents.GetWithInclude(x => x.Inventor, x => x.Payment, x => x.Request, x => x.Request.State, x => x.Idea, x => x.Register); }
             string id = param.PatentId;
             if (param.PatentId != null)
             {
-                s = s.Where(x => x.PatentId.ToString() == id).Select(x => x);
+                _s = _s.Where(x => x.PatentId.ToString() == id).Select(x => x);
             }
             //string inventorId = param.InventorId;
             //if (param.InventorId != null)
@@ -69,17 +67,17 @@ namespace Patents.Controllers
             //    s = s.Where(x => x.RegisterId.ToString() == inventorId).Select(x => x);
             string state = param.StatementState;
             if (param.StatementState != null)
-            { s = s.Where(x => x.Request.State.Info == state).Select(x => x); }
+            { _s = _s.Where(x => x.Request.State.Info == state).Select(x => x); }
             string inventorName = param.InventorName;
             if (param.InventorName != null)
-            { s = s.Where(x => x.Inventor.FullName == inventorName).Select(x => x); }
+            { _s = _s.Where(x => x.Inventor.FullName == inventorName).Select(x => x); }
             string registerName = param.RegisterName;
             if (param.RegisterName != null)
-            { s = s.Where(x => x.Register.FullName == registerName).Select(x => x); }
+            { _s = _s.Where(x => x.Register.FullName == registerName).Select(x => x); }
             string sum = param.Sum;
             if (param.Sum != null)
-            { s = s.Where(x => x.Payment.Sum.ToString() == sum).Select(x => x); }
-            return View("PatentsTable", s);
+            { _s = _s.Where(x => x.Payment.Sum.ToString(CultureInfo.InvariantCulture) == sum).Select(x => x); }
+            return View("PatentsTable", _s);
         }
     }
 }

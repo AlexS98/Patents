@@ -3,26 +3,22 @@ using Patents.Models.Repositories;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Patents.Models.Entities;
 
 namespace Patents.Controllers
 {
     public class HomeController : Controller
     {
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         // GET: Home
         public ActionResult Index()
         {
             //var roles = new RolesRepository().Roles;
             //var states = new StatesRepository().States;
             //var registers = new RegistersRepository().Registers;
-            var inventors = new InventorsRepository().Inventors;
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
+            var inventors = new GenericRepository<Inventor>().Get();
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
             return View(inventors.Select(x => x.FullName + " | " + x.Password));
         }
 

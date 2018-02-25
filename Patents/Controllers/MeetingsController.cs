@@ -1,6 +1,7 @@
 ﻿using Microsoft.Owin.Security;
-using Patents.Models;
+using Patents.Models.Entities;
 using Patents.Models.Repositories;
+using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,39 +12,34 @@ namespace Patents.Controllers
 {
     public class MeetingsController : Controller
     {
-        MeetingsRepository meeting;
-        IEnumerable<Meeting> s;
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private readonly GenericRepository<Meeting> _meeting;
+        private IEnumerable<Meeting> _s;
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         public MeetingsController() {
-            meeting = new MeetingsRepository();
-            s = meeting.Meetings;
+            _meeting = new GenericRepository<Meeting>();
+            _s = _meeting.Get();
         }
 
         public MeetingsController(IMeetingsRepository rep, bool test)
         {
             if (test)
             {
-                s = rep.Meetings;
+                _s = rep.Meetings;
             }
         }
 
         public ActionResult ShowAllData(bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) { s = meeting.Meetings; }
-            return View("MeetingsTable", s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) { _s = _meeting.Get(); }
+            return View("MeetingsTable", _s);
         }
 
         public ViewResult MeetingsTable()
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            return View(s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            return View(_s);
         }
 
         public PartialViewResult ShowAll()
@@ -54,21 +50,21 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(MeetingsView param, bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) s = meeting.Meetings;
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) _s = _meeting.Get();
             string state = param.State;
             if(param.State != null )
-                s = s.Where(x => x.State.Info == state).Select(x => x);
+                _s = _s.Where(x => x.State.Info == state).Select(x => x);
             string inventorName = param.InventorName;
             if (param.InventorName != null)
-                s = s.Where(x => x.Inventor.FullName == inventorName).Select(x => x);
+                _s = _s.Where(x => x.Inventor.FullName == inventorName).Select(x => x);
             string registerName = param.RegisterName;
             if (param.RegisterName != null)
-                s = s.Where(x => x.Register.FullName == registerName).Select(x => x);
+                _s = _s.Where(x => x.Register.FullName == registerName).Select(x => x);
             string date = param.Date;
             if (param.Date != null)
-                s = s.Where(x => x.Date.ToString() == date).Select(x => x);
-            return View("MeetingsTable", s);
+                _s = _s.Where(x => x.Date.ToString() == date).Select(x => x);
+            return View("MeetingsTable", _s);
         }
     }
 }

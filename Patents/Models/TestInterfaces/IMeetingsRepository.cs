@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Patents.Models.Entities;
 
-namespace Patents.Models.Repositories
+namespace Patents.Models.TestInterfaces
 {
     public interface IMeetingsRepository
     {

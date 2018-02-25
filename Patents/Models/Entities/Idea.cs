@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Patents.Models
+namespace Patents.Models.Entities
 {
     public class Idea
     {

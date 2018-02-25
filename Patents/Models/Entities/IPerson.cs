@@ -1,6 +1,6 @@
 ﻿namespace Patents.Models.Entities
 {
-    interface Person
+    internal interface IPerson
     {
         string FullName { get; set; }
         string Email { get; set; }

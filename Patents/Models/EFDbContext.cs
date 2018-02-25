@@ -7,7 +7,7 @@ namespace Patents.Models
     {
         public EFDBContext() : base ("EFDbConnection")
         {
-            Database.SetInitializer<EFDBContext>(new ContextInitializer());
+            Database.SetInitializer(new ContextInitializer());
         }
 
         public DbSet<Idea> Ideas { get; set; }

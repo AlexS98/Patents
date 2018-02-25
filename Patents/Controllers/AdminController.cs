@@ -7,24 +7,19 @@ namespace Patents.Controllers
     [Authorize(Roles = "Administrator,Moderator")]
     public class AdminController : Controller
     {
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         // GET: Admin
         public ActionResult Index()
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
             return View();
         }
 
         [Authorize(Roles = "Administrator")]
         public ActionResult AdminIndex()
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
             return View();
         }
     }

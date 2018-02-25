@@ -1,9 +1,8 @@
-﻿using Patents.Models.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Patents.Models
+namespace Patents.Models.Entities
 {
-    public class Inventor : Person
+    public class Inventor : IPerson
     {
         public int InventorId { get; set; }
         [Required]

@@ -1,8 +1,7 @@
-﻿using Patents.Models.Entities;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Patents.Models
+namespace Patents.Models.Entities
 {
     public class Payment
     {

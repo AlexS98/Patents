@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Patents.Models
+namespace Patents.Models.Entities
 {
     public class Patent
     {

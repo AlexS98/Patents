@@ -119,6 +119,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -143,6 +146,10 @@
     <Compile Include="Migrations\201801182158305_UpdatePayment.Designer.cs">
       <DependentUpon>201801182158305_UpdatePayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802251605433_AddRoles.cs" />
+    <Compile Include="Migrations\201802251605433_AddRoles.Designer.cs">
+      <DependentUpon>201802251605433_AddRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContextInitializer.cs" />
     <Compile Include="Models\EFDBContext.cs" />
@@ -151,24 +158,15 @@
     <Compile Include="Models\Entities\Meeting.cs" />
     <Compile Include="Models\Entities\Patent.cs" />
     <Compile Include="Models\Entities\Payment.cs" />
-    <Compile Include="Models\Entities\Person.cs" />
+    <Compile Include="Models\Entities\IPerson.cs" />
     <Compile Include="Models\Entities\Register.cs" />
     <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Entities\State.cs" />
     <Compile Include="Models\Entities\Request.cs" />
-    <Compile Include="Models\Repositories\IdeasRepository.cs" />
-    <Compile Include="Models\Repositories\IGenericRepository.cs" />
+    <Compile Include="Models\Repositories\EFGenericRepository.cs" />
     <Compile Include="Models\TestInterfaces\IInventorsRepository.cs" />
     <Compile Include="Models\TestInterfaces\IMeetingsRepository.cs" />
-    <Compile Include="Models\Repositories\InventorsRepository.cs" />
     <Compile Include="Models\TestInterfaces\IPatentsRepository.cs" />
-    <Compile Include="Models\Repositories\MeetingsRepository.cs" />
-    <Compile Include="Models\Repositories\PatentsRepository.cs" />
-    <Compile Include="Models\Repositories\PaymentsRepository.cs" />
-    <Compile Include="Models\Repositories\RegistersRepository.cs" />
-    <Compile Include="Models\Repositories\RolesRepository.cs" />
-    <Compile Include="Models\Repositories\StatementsRepository.cs" />
-    <Compile Include="Models\Repositories\StatesRepository.cs" />
     <Compile Include="Models\TestInterfaces\IRegistersRepository.cs" />
     <Compile Include="Models\ViewModels\InventorsView.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
@@ -215,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801182158305_UpdatePayment.resx">
       <DependentUpon>201801182158305_UpdatePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802251605433_AddRoles.resx">
+      <DependentUpon>201802251605433_AddRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

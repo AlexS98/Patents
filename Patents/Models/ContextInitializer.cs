@@ -1,9 +1,6 @@
 ﻿using Patents.Models.Entities;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 
 namespace Patents.Models
 {
@@ -11,21 +8,21 @@ namespace Patents.Models
     {
         protected override void Seed(EFDBContext db)
         {
-            List<Role> MyRoles = new List<Role>
+            var myRoles = new List<Role>
             {
                 new Role { UserRole = "Administrator" },
                 new Role { UserRole = "Moderator" },
                 new Role { UserRole = "Registred user" },
                 new Role { UserRole = "Unregistred user" }
             };
-            List<State> MyStates = new List<State>
+            var myStates = new List<State>
             {
                 new State { Info = "Expected" },
                 new State { Info = "Completed" },
                 new State { Info = "Canceled" }
             };
-            db.Roles.AddRange(MyRoles);
-            db.States.AddRange(MyStates);
+            db.Roles.AddRange(myRoles);
+            db.States.AddRange(myStates);
             db.SaveChanges();
         }
     }

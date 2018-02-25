@@ -1,5 +1,4 @@
-﻿@using Patents.Models
-@model IEnumerable<Patent>
+﻿@model IEnumerable<Patents.Models.Entities.Patent>
 @{
     ViewBag.Title = "PatentsTable";
 }
@@ -30,13 +29,13 @@
             {
                 <tr>
                     <td class="text-center">@i.PatentId</td>
-                    <td class="text-center">@i.Inventor.Name</td>
-                    <td class="text-center">@i.Register.Name</td>
+                    <td class="text-center">@i.Inventor.FullName</td>
+                    <td class="text-center">@i.Register.FullName</td>
                     <td class="text-center">@i.Inventor.Adress</td>
                     <td class="text-center">@i.Inventor.Email</td>
                     <td class="text-center">@i.Idea.Text</td>
-                    <td class="text-center">@i.Sum</td>
-                    <td class="text-center">@i.Statement.State.Info</td>
+                    <td class="text-center">@i.Payment.Sum</td>
+                    <td class="text-center">@i.Request.State.Info</td>
                 </tr>
             }
         }

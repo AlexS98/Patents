@@ -1,5 +1,5 @@
 ﻿using Microsoft.Owin.Security;
-using Patents.Models;
+using Patents.Models.Entities;
 using Patents.Models.Repositories;
 using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
@@ -12,39 +12,32 @@ namespace Patents.Controllers
 {
     public class RegistersController : Controller
     {
-        RegistersRepository register;
-        IEnumerable<Register> s;
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private readonly GenericRepository<Register> _register;
+        private IEnumerable<Register> _s;
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+
         public RegistersController()
         {
-            register = new RegistersRepository();
-            s = register.Registers;
+            _register = new GenericRepository<Register>();
+            _s = _register.Get();
         }
-        public RegistersController(IRegistersRepository rep = null, bool test = false)
+        public RegistersController(IRegistersRepository repository = null, bool test = false)
         {
-            if (test)
-            {
-                s = rep.Registers;
-            }
+            if (!test) return;
+            if (repository != null) _s = repository.Registers;
         }
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) { s = register.Registers; }
-            return View("RegistersTable", s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) { _s = _register.GetWithInclude(x => x.Role); }
+            return View("RegistersTable", _s);
         }
 
         public ViewResult RegistersTable()
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            return View(s);
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            return View(_s);
         }
 
         public PartialViewResult SearchingForm()
@@ -55,29 +48,29 @@ namespace Patents.Controllers
         [HttpPost]
         public ActionResult FindByParams(RegistersView param, bool test = false)
         {
-            ViewBag.UserName = AuthenticationManager.User.Identity.Name.ToString();
-            if (!test) { s = register.Registers; }
+            ViewBag.UserName = AuthenticationManager.User.Identity.Name;
+            if (!test) { _s = _register.GetWithInclude(x => x.Role); }
             string id = param.Id;
             if (param.Id != null)
             {
-                s = s.Where(x => x.RegisterId.ToString() == id).Select(x => x); }
-
+                _s = _s.Where(x => x.RegisterId.ToString() == id).Select(x => x);
+            }
             string inventorName = param.Name;
             if (param.Name != null)
             {
-                s = s.Where(x => x.FullName == inventorName).Select(x => x);
+                _s = _s.Where(x => x.FullName == inventorName).Select(x => x);
             }
             string email = param.Email;
             if (param.Email != null)
             {
-                s = s.Where(x => x.Email == email).Select(x => x);
+                _s = _s.Where(x => x.Email == email).Select(x => x);
             }
             string role = param.Role;
             if (param.Role != null)
             {
-                s = s.Where(x => x.Role.UserRole == role).Select(x => x);
+                _s = _s.Where(x => x.Role.UserRole == role).Select(x => x);
             }
-            return View("RegistersTable", s);
+            return View("RegistersTable", _s);
         }
     }
 }

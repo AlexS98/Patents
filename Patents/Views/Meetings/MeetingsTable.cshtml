@@ -1,5 +1,5 @@
 ﻿@using Patents.Models
-@model IEnumerable<Meeting>
+@model IEnumerable<Patents.Models.Entities.Meeting>
 @{
     ViewBag.Title = "Meetings";
 }
@@ -30,8 +30,8 @@
                 else if(i.State.Info == "Canceled") { cl = "danger"; }
                 <tr class="@cl">
                     <td class="text-center">@i.Date</td>
-                    <td class="text-center">@i.Inventor.Name</td>
-                    <td class="text-center">@i.Register.Name</td>
+                    <td class="text-center">@i.Inventor.FullName</td>
+                    <td class="text-center">@i.Register.FullName</td>
                     <td class="text-center">@i.State.Info</td>
                     <td class="text-center">@i.Additions</td>
                 </tr>

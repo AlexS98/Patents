@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Patents.Models.Entities;
 
 namespace Patents.Models.ViewModels
 {
@@ -32,10 +33,10 @@ namespace Patents.Models.ViewModels
         {
             return new Inventor
             {
-                FullName = this.FullName,
-                Adress = this.Address,
-                Password = this.Password,
-                Email = this.Email
+                FullName = FullName,
+                Adress = Address,
+                Password = Password,
+                Email = Email
             };
         }
     }

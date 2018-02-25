@@ -55,7 +55,7 @@ namespace Tests
                 StateId  = 0,
                 State = null
             };
-            Assert.Equal("0", meet.InventorId.ToString() + meet.Additions);
+            Assert.Equal("0", meet.InventorId + meet.Additions);
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace Tests
                 UserRole = "0",
                 RoleId = 0,
             };
-            Assert.Equal("00", role.RoleId.ToString() + role.UserRole);
+            Assert.Equal("00", role.RoleId + role.UserRole);
         }
 
         [Fact]
@@ -92,7 +92,7 @@ namespace Tests
                 Info = "0",
                 StateId = 0,
             };
-            Assert.Equal("00", state.StateId.ToString() + state.Info);
+            Assert.Equal("00", state.StateId + state.Info);
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace Tests
                 StateId = 0,
                 State = null
             };
-            Assert.Equal("00", statement.StateId.ToString() + statement.Name);
+            Assert.Equal("00", statement.StateId + statement.Name);
         }
 
         [Fact]
