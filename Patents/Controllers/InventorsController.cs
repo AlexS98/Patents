@@ -1,5 +1,4 @@
 ﻿using Microsoft.Owin.Security;
-using Patents.Models;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Patents.Models.Entities;
-using Patents.Models.TestInterfaces;
 
 namespace Patents.Controllers
 {
@@ -21,10 +19,6 @@ namespace Patents.Controllers
         {
             _inventor = new GenericRepository<Inventor>();
             _s = _inventor.Get();
-        }
-        public InventorsController(IInventorsRepository rep = null, bool test = false)
-        {
-            if (test) _s = rep?.Inventors;
         }
 
         // GET: Inventors

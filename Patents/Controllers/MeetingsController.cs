@@ -1,7 +1,6 @@
 ﻿using Microsoft.Owin.Security;
 using Patents.Models.Entities;
 using Patents.Models.Repositories;
-using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +18,6 @@ namespace Patents.Controllers
         public MeetingsController() {
             _meeting = new GenericRepository<Meeting>();
             _s = _meeting.Get();
-        }
-
-        public MeetingsController(IMeetingsRepository rep, bool test)
-        {
-            if (test)
-            {
-                _s = rep.Meetings;
-            }
         }
 
         public ActionResult ShowAllData(bool test = false)

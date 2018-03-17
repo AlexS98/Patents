@@ -163,11 +163,7 @@
     <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Entities\State.cs" />
     <Compile Include="Models\Entities\Request.cs" />
-    <Compile Include="Models\Repositories\EFGenericRepository.cs" />
-    <Compile Include="Models\TestInterfaces\IInventorsRepository.cs" />
-    <Compile Include="Models\TestInterfaces\IMeetingsRepository.cs" />
-    <Compile Include="Models\TestInterfaces\IPatentsRepository.cs" />
-    <Compile Include="Models\TestInterfaces\IRegistersRepository.cs" />
+    <Compile Include="Models\Repositories\GenericRepository.cs" />
     <Compile Include="Models\ViewModels\InventorsView.cs" />
     <Compile Include="Models\ViewModels\LoginModel.cs" />
     <Compile Include="Models\ViewModels\MeetingsView.cs" />

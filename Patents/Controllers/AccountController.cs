@@ -90,13 +90,6 @@ namespace Patents.Controllers
             ViewBag.UserName = AuthenticationManager.User.Identity.Name;
             var inventors = new GenericRepository<Inventor>();
             inventors.Create(registerModel.ToInventor());
-            //LoginModel model = new LoginModel
-            //{
-            //    Manager = false,
-            //    Name = registerModel.FullName,
-            //    Password = registerModel.Password
-            //};
-            //await Login(model);//redirect to login(post)
             return RedirectToAction("Login", "Account");
         }
     } 

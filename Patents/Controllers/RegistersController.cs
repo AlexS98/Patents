@@ -1,7 +1,6 @@
 ﻿using Microsoft.Owin.Security;
 using Patents.Models.Entities;
 using Patents.Models.Repositories;
-using Patents.Models.TestInterfaces;
 using Patents.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +20,7 @@ namespace Patents.Controllers
             _register = new GenericRepository<Register>();
             _s = _register.Get();
         }
-        public RegistersController(IRegistersRepository repository = null, bool test = false)
-        {
-            if (!test) return;
-            if (repository != null) _s = repository.Registers;
-        }
+
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {

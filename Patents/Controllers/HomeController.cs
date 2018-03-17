@@ -14,9 +14,6 @@ namespace Patents.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //var roles = new RolesRepository().Roles;
-            //var states = new StatesRepository().States;
-            //var registers = new RegistersRepository().Registers;
             var inventors = new GenericRepository<Inventor>().Get();
             ViewBag.UserName = AuthenticationManager.User.Identity.Name;
             return View(inventors.Select(x => x.FullName + " | " + x.Password));
