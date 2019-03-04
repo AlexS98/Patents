@@ -22,6 +22,23 @@ namespace Patents.Controllers
             _s = _patents.GetWithInclude(x => x.Inventor, x => x.Payment,x => x.Request.State, x => x.Idea, x => x.Register);
         }
 
+        [Authorize(Roles = "Registred user")]
+        public ActionResult UserPatents()
+        {
+            if (string.IsNullOrEmpty(AuthenticationManager.User.Identity.Name))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                string userName = AuthenticationManager.User.Identity.Name;
+                ViewBag.UserName = userName;
+                _s = _patents.GetWithInclude(x => x.Inventor, x => x.Payment, x => x.Request, x => x.Request.State, 
+                    x => x.Idea, x => x.Register).Where(x => x.Inventor.FullName == userName).Select(x => x);
+                return View("PatentsTable", _s);
+            }
+        }
+
         // GET: Inventors
         public ActionResult ShowAllData(bool test = false)
         {

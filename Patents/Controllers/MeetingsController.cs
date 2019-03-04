@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.Security;
+﻿using System;
+using Microsoft.Owin.Security;
 using Patents.Models.Entities;
 using Patents.Models.Repositories;
 using Patents.Models.ViewModels;
@@ -18,6 +19,22 @@ namespace Patents.Controllers
         public MeetingsController() {
             _meeting = new GenericRepository<Meeting>();
             _s = _meeting.Get();
+        }
+
+        [Authorize(Roles = "Administrator,Moderator")]
+        public ActionResult UserMeetings()
+        {
+            if (string.IsNullOrEmpty(AuthenticationManager.User.Identity.Name))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                string userName = AuthenticationManager.User.Identity.Name;
+                ViewBag.UserName = userName;
+                _s = _meeting.Get().Where(x => x.Inventor.FullName == userName).Select(x => x);
+                return View("MeetingsTable", _s);
+            }
         }
 
         public ActionResult ShowAllData(bool test = false)

@@ -33,11 +33,13 @@ namespace Patents.Controllers
                 Role role = null;
                 if (!model.Manager)
                 {
-                    user = await _db.Inventors.FirstOrDefaultAsync(u => u.FullName == model.Name && u.Password == model.Password);
+                    user = await _db.Inventors.FirstOrDefaultAsync(u => u.FullName == model.Name && 
+                    u.Password == model.Password);
                 }
                 else
                 {
-                    Register register = await _db.Registers.FirstOrDefaultAsync(u => u.FullName == model.Name && u.Password == model.Password);
+                    Register register = await _db.Registers.FirstOrDefaultAsync(u => u.FullName == model.Name && 
+                    u.Password == model.Password);
                     if (register != null)
                     {
                         role = await _db.Roles.FirstOrDefaultAsync(u => u.RoleId == register.RoleId);
@@ -51,18 +53,18 @@ namespace Patents.Controllers
                 }
                 else
                 {
-                    ClaimsIdentity claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
-                    claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.GetPersonId().ToString(), ClaimValueTypes.String));
+                    ClaimsIdentity claim = new ClaimsIdentity("ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, 
+                        ClaimsIdentity.DefaultRoleClaimType);
+                    claim.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.GetPersonId().ToString(), 
+                        ClaimValueTypes.String));
                     claim.AddClaim(new Claim(ClaimsIdentity.DefaultNameClaimType, user.FullName, ClaimValueTypes.String));
                     claim.AddClaim(new Claim(
                         "http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider",
                         "OWIN Provider", ClaimValueTypes.String));
-                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultRoleClaimType, (role != null) ? role.UserRole : "Registred user", ClaimValueTypes.String));
+                    claim.AddClaim(new Claim(ClaimsIdentity.DefaultRoleClaimType, (role != null) ? role.UserRole : 
+                        "Registred user", ClaimValueTypes.String));
                     AuthenticationManager.SignOut();
-                    AuthenticationManager.SignIn(new AuthenticationProperties
-                    {
-                        IsPersistent = true
-                    }, claim);
+                    AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = true }, claim);
                     return RedirectToAction("Index", "Home");
                 }
             }

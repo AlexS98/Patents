@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
 }
 
@@ -14,5 +13,13 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.col-xs-9 p {
+    text-align: justify;
+}
+
+.col-xs-3 .btn {
+    margin-bottom: 20px;
 }
 

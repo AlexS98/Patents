@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -23,22 +24,27 @@
     </div>
     <div class="row panel">
         <div id="categories" class="col-xs-3">
-            <h2 class="text-center">MENU</h2>
+            <h3 class="text-center">ACTONS</h3>
             <hr />
-            @Html.ActionLink("Inventors", "ShowAllData", "Inventors", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("Apply for a patent", "", "", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("My meetings", "UserMeetings", "Meetings", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("My patents", "UserPatents", "Patents", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("All patents", "", "", null, new { @class = "btn btn-success btn-block btn-lg" })
+
+            <h2 class="text-center">TO DELETE</h2>
             <hr />
-            @Html.ActionLink("Registers", "ShowAllData", "Registers", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("Inventors", "ShowAllData", "Inventors", null, new { @class = "btn-block" })
             <hr />
-            @Html.ActionLink("Patents", "ShowAllData", "Patents", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("Registers", "ShowAllData", "Registers", null, new { @class = "btn-block" })
             <hr />
-            @Html.ActionLink("Meetings", "ShowAllData", "Meetings", null, new { @class = "btn btn-success btn-block btn-lg" })
+            @Html.ActionLink("Patents", "ShowAllData", "Patents", null, new { @class = "btn-block" })
             <hr />
-            <h2 class="text-center">ADMIN PANEL</h2>
+            @Html.ActionLink("Meetings", "ShowAllData", "Meetings", null, new { @class = "btn-block" })
             <hr />
-            @Html.ActionLink("Managers", "Index", "Admin", null, new { @class = "btn btn-warning btn-block btn-lg" })
+            @Html.ActionLink("Managers", "Index", "Admin", null, new { @class = "btn-block" })
             <hr />
         </div>
-        <div class="col-xs-8">
+        <div class="col-xs-9">
             @RenderBody()
         </div>
     </div>
